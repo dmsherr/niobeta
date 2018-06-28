@@ -1,0 +1,166 @@
+
+
+Implementation
+
+An intelligent agency architecture for secure, auto-provisioned environments; methods of specifying, monitoring, and enforcing constraint configuration suites of service level policies
+
+Figure 3: Mechanisms for Digital Twins: Brains of Intelligent Agents, Left Lobe with more than a dash of the Right Lobe
+
+Each Box is a Python Module and/or a nio Block.
+
+Markov Engine Intelligent Agents are pico-economic mechanisms for a well regulated electronic Transaction (eTxn) Market:
+
+Intelligent Agent Operating Mechanisms
+
+Service Gauges (16), (23) feed Markov Algorithms (17) which execute to maintain Persistence of State (18).  The Markov Algorithms are lists of Guarded Commands that evaluate Input Signals and Messages (19) per Guard (20) conditions that determine changes in State within a Working Set(18) (https://en.wikipedia.org/wiki/Working_set) via the Guard (20) respective Command (21).
+
+
+(16) Service Gauge Objects
+
+[Context, Content] imply Service Constraints 
+
+cf. Service Level Constraint (23), Service Level Control Intelligent Agent (43) and Operational Object Intelligent Agent (44)
+
+	{ ([gauge*, working data set], [service category, service level definition, price, compensating action*])* }
+
+[ https://en.wikipedia.org/wiki/Working_set ]
+
+
+MAxml: Markov Algorithm xml 
+
+A service is a list of guarded commands embedded in a service programming contract of {precondition, invariant and post-condition}
+	[ https://www.eiffel.com/values/design-by-contract/ ]  Execution model: A State Machine {Beginning Middle End, resp.} implemented using the BCM
+
+Syntax  <svc:<pre:<statement><lop:<imp><inv:<statement>><mrkalg:{<statement><action>}*><post:<statement>>>
+
+Semantics  If  pre:<statement> then while  inv:<statement> iterate through {<statement><action>}* performing <action> of first true <statement>, ending when no <statement> is true or a cmd:<halt> is a encountered in an executed <action> whence ( fail(post:<statement>) )
+
+Details  <statement> is any logical expression  <action> is any imperative cmd
+
+
+(17) Markov Algorithm
+
+Policy constraint process as a list of Dijkstra Guarded Commands structured to support a triggered repetitive read of the list performing implied actions until nothing applies or an explicit exit is issued. 	
+
+	https://en.wikipedia.org/wiki/Guarded_Command_Language
+
+	https://en.wikipedia.org/wiki/Markov_algorithm
+
+	https://en.wikipedia.org/wiki/Andrey_Markov_Jr.
+
+Execution: For each Policy, (marshal Input and Persistent Data, apply Guard, perform Command and Output)
+
+<policy>		# Fill in <condition> and <action> for each <guard> entry 
+    {
+     <guard>
+	<condition>
+	</condition>
+	<action>
+	</action>
+    }*
+</policy>
+
+[ Still need to convert C++ below into Python—no multiple inheritance, so straight forward ]
+
+# include xmldef.h
+# include markovEngine.h
+
+def markovEngine( grdCmdList )
+
+	# INPUT 	list of guarded commands where guard and action are each an xml doc 
+	# OUTPUT	some type of document of messages and signals
+
+	struct 	grdCmdList[]
+
+		guard;		#  logical statement in Polish Suffix form 
+		action;		#  list of commands in Polish Suffix form
+
+	process = NOHALT
+
+	i = 0
+
+	while( process != HALT ) {
+		
+		if( guard[i] != NULL && evalGuard( guard[i] ):
+
+			if( process = ( retval = exec( action[i]) ) == HALT ):
+
+				break
+		i++
+	}
+return( retval )
+
+
+(18) Persistence
+
+Maintenance of the stores and formats dubbed Working Data Set. (Dynamic, Constantly Changing!)
+
+	https://en.wikipedia.org/wiki/Working_set
+
+(19) Input
+
+Through the VEB and VDS from devices, sensors, and processes
+
+(20) Guard
+
+ Conditions on Input Signals and Messages => Guard
+
+Guarded Conditions Business Operational Alerting
+
+ Temperature Thresholds
+> 32 C , 89.6 F
+< 0 C 32 F
+Vibration Thresholds
+> 2600 Hz
+LiftFuelLevel Thresholds
+< 0.15
+Work Weight Threshold
+Class I: Electric Motor Rider Trucks. 
+> 500 lbs
+Class II: Electric Motor Narrow Aisle Trucks. 
+> 1000 lbs
+Class III: Electric Motor Hand Trucks or Hand/Rider Trucks. 
+> 1500 lbs
+Class IV: Internal Combustion Engine (ICE) Trucks with Cushion Tires. 
+> 2000 lbs
+Class V: Internal Combustion Engine Trucks with Pneumatic Tires.
+> 2 Long Metric Tons (4400 lbs)
+
+Work Schedule Exceeded
+> 300 seconds 
+
+Load Center AntiGodlinity 
+> 24 Inches from Load Center
+
+Guarded Conditions OSHA Safety Compliance
+
+1910.178(q)(7)
+Industrial trucks shall be examined before being placed in service, and shall not be placed in service if the examination shows any condition adversely affecting the safety of the vehicle. Such examination shall be made at least daily.
+Where industrial trucks are used on a round-the-clock basis, they shall be examined after each shift. Defects when found shall be immediately reported and corrected.
+> 8 hours per shift if active for multiple continuous shifts 
+> 24 hours if only active for a single shift
+
+
+
+1910.178(n)(1)
+All traffic regulations shall be observed, including authorized plant speed limits. A safe distance shall be maintained approximately three truck lengths from the truck ahead, and the truck shall be kept under control at all times.
+
+1910.178(n)(9)
+
+Stunt driving and horseplay shall not be permitted.
+
+Lift Speed Limit 
+> 5 meters per second above limit
+Lift Direction Change Frequency
+> 45 degrees per second
+
+(21) Output
+
+Inputs into VDS through VBS to devices, sensors and processes
+	
+(22) Command
+
+Enacted Outcomes on Output Signals & Messages => Command
+
+
+
